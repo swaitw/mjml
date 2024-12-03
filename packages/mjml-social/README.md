@@ -4,6 +4,12 @@
   <img src="https://cloud.githubusercontent.com/assets/6558790/12751360/0c78ce48-c9bd-11e5-98ca-4a2ac9e6341b.png" alt="desktop" style="width: 250px;"/>
 </p>
 
+<aside class="warning">
+  `mj-social-element`'s `name` attribute is a shortcut for some common social elements. <br />
+  You should avoid rely too much on this as those icons are hosted by Mailjet for their Email Builder.<br />
+  Use <a href="#custom-social-element">custom element syntax instead.</a>
+</aside>
+
 Displays calls-to-action for various social networks with their associated logo. You can add social networks with the `mj-social-element` tag.
 
 ```xml
@@ -18,8 +24,11 @@ Displays calls-to-action for various social networks with their associated logo.
           <mj-social-element name="google" href="https://mjml.io/">
             Google
           </mj-social-element>
-          <mj-social-element  name="twitter" href="https://mjml.io/">
+          <mj-social-element name="twitter" href="https://mjml.io/">
             Twitter
+          </mj-social-element>
+          <mj-social-element name="x" href="https://mjml.io/">
+            X
           </mj-social-element>
         </mj-social>
       </mj-column>
@@ -93,6 +102,7 @@ padding-left                | px          | left offset                      | n
 padding-right               | px          | right offset                       | n/a
 padding-top                 | px          | top offset                         | n/a
 icon-padding                | px          | padding around the icon       | 0px
+icon-position               | string      | left/right                    | right
 text-padding                | px          | padding around the text       | 4px 4px 4px 0
 sizes                       | media query & width | set icon width based on query | n/a
 src                         | url         | image source                  | Each social `name` has its own default
@@ -106,6 +116,7 @@ vertical-align              | string      | top/middle/bottom             | midd
 Supported networks with a share url:
 - facebook
 - twitter
+- x
 - google
 - pinterest
 - linkedin

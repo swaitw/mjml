@@ -14,6 +14,11 @@ const defaultSocialNetworks = {
     'background-color': '#55acee',
     src: `${IMG_BASE_URL}twitter.png`,
   },
+  x: {
+    'share-url': 'https://twitter.com/intent/tweet?url=[[URL]]',
+    'background-color': '#000000',
+    src: `${IMG_BASE_URL}twitter-x.png`,
+  },
   google: {
     'share-url': 'https://plus.google.com/share?url=[[URL]]',
     'background-color': '#dc4e41',
@@ -94,6 +99,7 @@ export default class MjSocialElement extends BodyComponent {
 
   static allowedAttributes = {
     align: 'enum(left,center,right)',
+    'icon-position': 'enum(left,right)',
     'background-color': 'color',
     color: 'color',
     'border-radius': 'unit(px)',
@@ -127,6 +133,7 @@ export default class MjSocialElement extends BodyComponent {
   static defaultAttributes = {
     alt: '',
     align: 'left',
+    'icon-position': 'left',
     color: '#000',
     'border-radius': '3px',
     'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
@@ -227,13 +234,9 @@ export default class MjSocialElement extends BodyComponent {
     } = this.getSocialAttributes()
 
     const hasLink = !!this.getAttribute('href')
+    const iconPosition = this.getAttribute('icon-position')
 
-    return `
-      <tr
-        ${this.htmlAttributes({
-          class: this.getAttribute('css-class'),
-        })}
-      >
+    const makeIcon = () => `
         <td ${this.htmlAttributes({ style: 'td' })}>
           <table
             ${this.htmlAttributes({
@@ -274,6 +277,9 @@ export default class MjSocialElement extends BodyComponent {
             </tbody>
           </table>
         </td>
+      `
+
+    const makeContent = () => `
         ${
           this.getContent()
             ? `
@@ -298,6 +304,18 @@ export default class MjSocialElement extends BodyComponent {
           `
             : ''
         }
+      `
+
+    const renderLeft = () => `${makeIcon()} ${makeContent()}`
+    const renderRight = () => `${makeContent()} ${makeIcon()}`
+
+    return `
+      <tr
+        ${this.htmlAttributes({
+          class: this.getAttribute('css-class'),
+        })}
+      >
+        ${iconPosition === 'left' ? renderLeft() : renderRight() }
       </tr>
     `
   }

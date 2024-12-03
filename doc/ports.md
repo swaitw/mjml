@@ -11,18 +11,12 @@ https://github.com/jdrouet/mrml
 ### Missing implementations / components:
 
 - `mj-style[inline]`: not yet implemented. It requires parsing the generated html to apply the inline styles afterward (that's how it's done in mjml) which would kill the performances. Applying it at render time would improve the performance but it would still require to parse the CSS.
-- `mj-include`: not yet implemented. It requires to handle loading remote templates when using mrml in a wasm (browser or server side) format, which implies being able to load from a different location (`file://`, `https://`, relative, etc).
 
 ## .NET: MJML.NET
 
 A blazingly-fast unofficial port of MJML 4 to .NET 6.
 
 https://github.com/SebastianStehle/mjml-net
-
-### Missing implementations / components
-
-- `mj-style[inline]`: not yet implemented for performance reasons.
-- `mj-html-attributes`: not yet implemented for performance reasons.
 
 ## Elixir: MJML (Rust NIFs for Elixir)
 
@@ -44,6 +38,12 @@ https://github.com/faire/mjml-react#readme
 
 ## Python: mjml-python
 
+Python wrapper for MRML, the MJML markup language implementation in Rust.
+
+https://github.com/mgd020/mjml-python
+
+## Python: mjml-python
+
 Python implementation for MJML.
 
 https://github.com/FelixSchwarz/mjml-python
@@ -58,4 +58,5 @@ https://github.com/liminspace/django-mjml
 
 Build responsive e-mails easily using MJML and Laravel Mailables.
 
-https://github.com/asahasrabuddhe/laravel-mjml
+- https://github.com/EvanSchleret/lara-mjml
+- https://github.com/asahasrabuddhe/laravel-mjml (not maintained)
